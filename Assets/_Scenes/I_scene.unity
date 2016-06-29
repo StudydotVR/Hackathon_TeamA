@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bd9a89ce21e4cc98f2e8cdbf81f901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursor: {fileID: 2800000, guid: 9123d61567ccd499ea62702b2c4e2584, type: 3}
   ball: {fileID: 123682, guid: d0be0c2eaa8e340aa988711a41023e84, type: 2}
 --- !u!23 &477693033
 MeshRenderer:
