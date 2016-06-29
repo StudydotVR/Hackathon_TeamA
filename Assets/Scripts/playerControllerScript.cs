@@ -3,12 +3,15 @@ using System.Collections;
 
 public class playerControllerScript : MonoBehaviour {
 	private GameObject cube;
-	public GameObject ball;
+	public Texture2D cursor; // ポインタの画像
+	public  GameObject ball;
 	private newRandomBall randomBall;
 	private GameObject nBall;
 	private ballScript ballsc;
 	// Use this for initialization
 	void Start () {
+		Vector2 vector2 = new Vector2(cursor.width / 2 , cursor.height / 2);
+		Cursor.SetCursor(cursor, vector2 , CursorMode.ForceSoftware);
 		cube = GameObject.Find ("Player");
 		randomBall = cube.GetComponent<newRandomBall> ();
 		setObject ();
@@ -25,7 +28,9 @@ public class playerControllerScript : MonoBehaviour {
 		
 		bool push = Input.GetMouseButtonUp(0);
 		if (push) {
-			Vector3 vec = new Vector3 (transform.position.x, transform.position.y, -3);
+		
+
+			Vector3 vec = new Vector3 (Input.mousePosition);
 			GameObject obj = getObject ();
 			obj.transform.position = vec;
 			ballScript sc = obj.GetComponent<ballScript> ();
