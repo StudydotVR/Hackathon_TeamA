@@ -28,11 +28,15 @@ public class playerControllerScript : MonoBehaviour {
 		
 		bool push = Input.GetMouseButtonUp(0);
 		if (push) {
-		
 
-			Vector3 vec = new Vector3 (Input.mousePosition);
+
 			GameObject obj = getObject ();
-			obj.transform.position = vec;
+			Vector3 position = Input.mousePosition;
+			position.z = 2f;
+			// マウス位置座標をスクリーン座標からワールド座標に変換する
+			Vector3 screenToWorldPointPosition = Camera.main.ScreenToWorldPoint(position);
+			// ワールド座標に変換されたマウス座標を代入
+			obj.transform.position = screenToWorldPointPosition;
 			ballScript sc = obj.GetComponent<ballScript> ();
 			sc.setShotFlag ();
 			sc.setObject (obj);

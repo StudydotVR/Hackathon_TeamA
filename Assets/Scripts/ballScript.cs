@@ -29,8 +29,8 @@ public class ballScript : MonoBehaviour { //自分の玉 色のマテリアル�
 
 	void FixedUpdate(){
 		if (shotFlag) {
-			rigid.AddForce (ball.transform.forward * 10);//まっすぐ飛ばす
-			if (ball.transform.position.z >= -10) {
+			rigid.AddForce (0,0, Mathf.Abs(ball.transform.position.z)  * 10);//まっすぐ飛ばす
+			if (ball.transform.position.z >= 10) {
 				Destroy (ball, 1f);
 			}
 		}
