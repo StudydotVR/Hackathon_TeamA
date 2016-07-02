@@ -7,6 +7,8 @@ TagManager:
   - levelfirst
   - levelsecond
   - levelthird
+  - bullet
+  - myBullet
   layers:
   - Default
   - TransparentFX
