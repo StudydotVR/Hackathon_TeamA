@@ -396,7 +396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d7b7121b174b4b8c80983b09af9c783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyBall: {fileID: 159576, guid: ff246c1cfeff841e4a0445cadbd812c4, type: 2}
+  enemyBall: {fileID: 123438, guid: a1bface317c2545f8948e1893f61a169, type: 2}
   originEnemy: {fileID: 561208871}
 --- !u!114 &477693032
 MonoBehaviour:
@@ -410,8 +410,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursor: {fileID: 2800000, guid: 9123d61567ccd499ea62702b2c4e2584, type: 3}
-  ball: {fileID: 109322, guid: 37b3dac42e0ed4dd2a9080e83ae8d3b1, type: 2}
+  ball: {fileID: 159380, guid: 468a59267844b4a21baa65205714ed82, type: 2}
   pointText: {fileID: 1118041018}
+  sound: {fileID: 8300000, guid: 10ad83c252bfe4cdfbd1af582573d773, type: 3}
 --- !u!23 &477693033
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -804,7 +805,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 712176822}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.57, y: 1.22, z: -6.4}
+  m_LocalPosition: {x: -2.73, y: 1.31, z: -8.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1295,6 +1296,7 @@ GameObject:
   - 224: {fileID: 1118041019}
   - 222: {fileID: 1118041021}
   - 114: {fileID: 1118041020}
+  - 114: {fileID: 1118041022}
   m_Layer: 5
   m_Name: ScorePointText
   m_TagString: Untagged
@@ -1361,6 +1363,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1118041018}
+--- !u!114 &1118041022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1118041018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27d0968d317c14fff8b2d045653c14ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1156470606
 GameObject:
   m_ObjectHideFlags: 0
@@ -2170,7 +2183,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:

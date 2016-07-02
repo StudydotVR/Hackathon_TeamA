@@ -4,6 +4,7 @@ using System.Collections;
 public class bulletDataScript : MonoBehaviour {
 	private string[] chemicalFormulaArray;
 	private int[] tagArray;
+	public Texture[] textImages;
 	// Use this for initialization
 	void Start () {
 		chemicalFormulaArray = new string[] {
@@ -24,7 +25,7 @@ public class bulletDataScript : MonoBehaviour {
 			"FeOH"
 		};
 		tagArray = new int[] {
-			-3, -3, -3, -2, -2, -2, -2, -2, 3, 3, 3,3, 2, 2, 2, 2
+			-2, -2, -2, -2, -1, -1, -1, -1, 2,2, 2,2, 1, 1, 1, 1
 		};
 	}
 	
@@ -38,5 +39,8 @@ public class bulletDataScript : MonoBehaviour {
 
 	public string[] getchemicalArray(){
 		return chemicalFormulaArray;
+	}
+	public Texture[] getImage(){
+		return textImages;
 	}
 }

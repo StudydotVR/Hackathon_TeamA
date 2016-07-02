@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 public class titleButtonScript : MonoBehaviour {
 	static string leveltag;
+	public Texture[] textImages;
 	// Use this for initialization
 	void Start () {
 	

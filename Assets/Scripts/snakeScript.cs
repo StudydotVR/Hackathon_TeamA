@@ -41,8 +41,6 @@ public class snakeScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-
 	}
 	public void setTag(int tag){
 		mTag = tag;
@@ -54,14 +52,12 @@ public class snakeScript : MonoBehaviour {
 		if (deleteFlag) {
 			deleteCount++;
 			if (deleteCount >= 50) {
-				
 				playerSC.point ();
 				Destroy (gameObject);
 			}
 		}
 		Count++;
 		startVec = transform.position;
-
 		if (Count >= 50) {
 			Count = 0;
 			EndVec = new Vector3 (Random.Range (minX, maxX)-6f, Random.Range (minY, maxY), zPoint);

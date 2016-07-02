@@ -15,6 +15,7 @@ public class playerControllerScript : MonoBehaviour {
 	private AudioSource beamgun3;
 	public AudioClip sound;
 	private pointTextScript Psc;
+	public bulletDataScript bulDataSC;
 	// Use this for initialization
 	void Start () {
 		Vector2 vector2 = new Vector2(cursor.width / 2 , cursor.height / 2);
@@ -70,7 +71,8 @@ public class playerControllerScript : MonoBehaviour {
 	GameObject makeBall(){
 		GameObject	nextBall  =	Instantiate (ball,transform.position,ball.transform.rotation) as GameObject;//のちにマウスのポインタの座標に変更
 		ballsc = nextBall.GetComponent<ballScript>();
-		ballsc.setTag (randomBall.selectBall());
+		int tag = randomBall.selectBall ();
+		ballsc.setTag (tag);
 		return nextBall;
 	}
 	public void point (){
