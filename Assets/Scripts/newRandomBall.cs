@@ -6,7 +6,7 @@ public class newRandomBall : MonoBehaviour {
 	private int totalVariety;//中性含めた玉の種類-1
 	public GameObject enemyBall;
 	public GameObject originEnemy;
-	public bulletDataScript bullet;
+
 	// Use this for initialization
 	void Start () {
 		myVariety = 4;
@@ -29,26 +29,29 @@ public class newRandomBall : MonoBehaviour {
 	}
 
 	public void MakeEnemy(){
-		int enemyCount = Random.Range (1, 5);
+		int enemyCount = Random.Range (1, 3);
 	    for (int i = 0; i < enemyCount; i++) {
-			Vector3 vec = new Vector3 (Random.Range (-1f, 2f) , Random.Range (0.7f, 1.2f), 7f);
+			Vector3 vec = new Vector3 (Random.Range (0.9f, 2f) , Random.Range (0.7f, 1f), originEnemy.transform.position.z - 3f);
 			GameObject enemy =	Instantiate(enemyBall,vec,enemyBall.transform.rotation) as GameObject;
 			snakeScript sSc = enemy.GetComponent<snakeScript> ();
 			RawImage rawImage;
 			GameObject canvas = enemy.transform.FindChild ("Canvas").gameObject;
 			GameObject target = canvas.transform.FindChild ("RawImage").gameObject;
-				   rawImage = target.GetComponent<RawImage> ();
-					int chemicalNum = selectEnemy ();
-					int[] tags = bullet.getTagArray ();
-					int tag = tags [chemicalNum];
-					sSc.setTag(tag);
-					Texture[] texs = bullet.getImage ();
-					Texture texture = texs [chemicalNum];
-					
-				//	string[] array = bullet.getchemicalArray ();
-				//	string path = "Textures/" + array [chemicalNum];
-				//	Texture tex = Resources.Load(path) as Texture;
-			rawImage.texture = texture;
+		   rawImage = target.GetComponent<RawImage> ();
+			int chemicalNum = selectEnemy ();
+			bulletDataScript bu = GetComponent<bulletDataScript> ();
+				//	int[] tags = bu.getTagArray ();
+			int tag = bu.getTag(chemicalNum);
+				sSc.setTag(tag);
+				Texture[] texs = bu.getImage ();
+				Texture texture = texs [chemicalNum];
+			if (titleButtonScript.getLevel () != 1) {
+				rawImage.texture = texture;
+
+			} else {
+				rawImage.hideFlags = HideFlags.HideAndDontSave;
+				Destroy (rawImage);
+			}
 				
 		//	}
 			//GameObject canvas = enemy.transform.FindChild("Canvas").gameObject;

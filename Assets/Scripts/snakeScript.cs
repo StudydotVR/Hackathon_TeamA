@@ -12,7 +12,7 @@ public class snakeScript : MonoBehaviour {
 	private float minY;
 	public GameObject leftWall;
 	public GameObject rightWall;
-	public GameObject player;
+	private GameObject player;
 	private Vector3 startVec;
 	private Vector3 EndVec;
 	private float zPoint;
@@ -28,14 +28,16 @@ public class snakeScript : MonoBehaviour {
 		//Vector3 vec = randomMove();
 		//rigid.AddForce (vec);
 		deleteFlag = false;
-		minX = -0.9f;
-		maxX = 0.6f;
-		minY = 1f;
-		maxY = 1.2f;
+		minX = -2f;
+		maxX = -1f;
+		minY = 0.7f;
+		maxY = 1f;
+
+
+		player = GameObject.Find ("Player");
 		zPoint = player.transform.position.z;
 		startVec = new Vector3 (Random.Range (minX, maxX) , Random.Range (minY, maxY), transform.position.z);
 		EndVec = new Vector3 (Random.Range (minX, maxX), Random.Range (minY, maxY), zPoint);
-		player = GameObject.Find ("Player");
 		playerSC = player.GetComponent<playerControllerScript> ();
 	}
 	
@@ -46,7 +48,12 @@ public class snakeScript : MonoBehaviour {
 		mTag = tag;
 		int soeji = mTag + 2;
 		Debug.Log (soeji);
-		GetComponent<Renderer>().material = materials[soeji]; 
+		if (titleButtonScript.getLevel () < 3) {
+			
+			GetComponent<Renderer> ().material = materials [soeji]; //レベルが２以下の時
+		} else {
+			GetComponent<Renderer> ().material = materials [5];
+		}
 	}
 	void FixedUpdate(){
 		if (deleteFlag) {
@@ -58,15 +65,15 @@ public class snakeScript : MonoBehaviour {
 		}
 		Count++;
 		startVec = transform.position;
-		if (Count >= 50) {
+		if (Count >= 10) {
 			Count = 0;
-			EndVec = new Vector3 (Random.Range (minX, maxX)-6f, Random.Range (minY, maxY), zPoint);
+			EndVec = new Vector3 (Random.Range (minX, maxX), Random.Range (minY, maxY), zPoint);
 			//transform.position = Vector3.Lerp (startVec, EndVec,Time.time );
 			//方向転換
 		} else {
-			transform.position = Vector3.Lerp (startVec, EndVec, Time.deltaTime * 0.1f);
+			transform.position = Vector3.Lerp (transform.position, EndVec, Time.deltaTime *0.1f);
 		}
-		if (transform.position.z <= -200 ) {
+		if (transform.position.z <= -50 ) {
 			Destroy (gameObject,1f);
 		}
 	}
@@ -89,9 +96,10 @@ public class snakeScript : MonoBehaviour {
 			} else {
 				deleteFlag = false;
 			}
-			}
-			Debug.Log (mTag);
 			int soeji = mTag + 2;
 			GetComponent<Renderer>().material = materials[soeji]; 
+			}
+			Debug.Log (mTag);
+			
 		}
 }
