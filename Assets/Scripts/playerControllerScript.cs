@@ -12,6 +12,8 @@ public class playerControllerScript : MonoBehaviour {
 	private int newEnemyCount ;
 	private int timeCount;
 	public  GameObject pointText;
+	private AudioSource beamgun3;
+	public AudioClip sound;
 	private pointTextScript Psc;
 	// Use this for initialization
 	void Start () {
@@ -23,6 +25,7 @@ public class playerControllerScript : MonoBehaviour {
 		randomBall.MakeEnemy ();
 		timeCount = 0;
 		Psc = pointText.GetComponent<pointTextScript> ();
+		beamgun3 = GetComponent<AudioSource>();
 	}
 	void setObject(){
 		nBall = makeBall();
@@ -42,7 +45,7 @@ public class playerControllerScript : MonoBehaviour {
 		if (push) {
 			GameObject obj = getObject ();
 			if (obj != null) {
-				
+				beamgun3.PlayOneShot(sound);
 				Vector3 position = Input.mousePosition;
 				position.z = 2f;
 				// マウス位置座標をスクリーン座標からワールド座標に変換する
