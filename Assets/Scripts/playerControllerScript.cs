@@ -47,17 +47,17 @@ public class playerControllerScript : MonoBehaviour {
 			if (obj != null) {
 				beamgun3.PlayOneShot(sound);
 				Vector3 position = Input.mousePosition;
-				position.z = 2f;
+				position.z = 0f;
 				// マウス位置座標をスクリーン座標からワールド座標に変換する
 				Vector3 screenToWorldPointPosition = Camera.main.ScreenToWorldPoint (position);
 				// ワールド座標に変換されたマウス座標を代入*/
 				obj.transform.position = screenToWorldPointPosition;
 				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);	// クリックした位置から真っ直ぐ奥に行く光線.
-				RaycastHit hitInfo;												// ヒット情報を格納する変数を作成
+				RaycastHit hitInfo ;												// ヒット情報を格納する変数を作成
 				Vector3 vec = ray.direction.normalized;
 				if (Physics.Raycast (ray, out hitInfo)) {
 					obj.GetComponent<Rigidbody> ().velocity = vec * 4;
-					obj.transform.Rotate (vec, 1);
+
 					// Do something with the object that was hit by the raycast.
 				} else {
 					ballsc.setShotFlag ();

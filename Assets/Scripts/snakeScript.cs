@@ -28,16 +28,15 @@ public class snakeScript : MonoBehaviour {
 		//Vector3 vec = randomMove();
 		//rigid.AddForce (vec);
 		deleteFlag = false;
-		minX = -5.2f;
-		maxX = -2.96f;
-		minY = 0.0f;
-		maxY = 0.1f;
-		zPoint = player.transform.position.z/ 3;
-		startVec = new Vector3 (Random.Range ( minX, maxX), Random.Range (minY, maxY), transform.position.z);
+		minX = -0.9f;
+		maxX = 0.6f;
+		minY = 1f;
+		maxY = 1.2f;
+		zPoint = player.transform.position.z;
+		startVec = new Vector3 (Random.Range (minX, maxX) , Random.Range (minY, maxY), transform.position.z);
 		EndVec = new Vector3 (Random.Range (minX, maxX), Random.Range (minY, maxY), zPoint);
 		player = GameObject.Find ("Player");
 		playerSC = player.GetComponent<playerControllerScript> ();
-
 	}
 	
 	// Update is called once per frame
@@ -47,7 +46,7 @@ public class snakeScript : MonoBehaviour {
 	}
 	public void setTag(int tag){
 		mTag = tag;
-		int soeji = mTag + 4;
+		int soeji = mTag + 2;
 		Debug.Log (soeji);
 		GetComponent<Renderer>().material = materials[soeji]; 
 	}
@@ -62,18 +61,18 @@ public class snakeScript : MonoBehaviour {
 		}
 		Count++;
 		startVec = transform.position;
-		transform.position = Vector3.Lerp (startVec, EndVec,Time.deltaTime * 0.01f );
+
 		if (Count >= 50) {
-			zPoint = zPoint + zPoint;
 			Count = 0;
-			EndVec = new Vector3 (Random.Range (minX, maxX), Random.Range (minY, maxY), zPoint);
+			EndVec = new Vector3 (Random.Range (minX, maxX)-6f, Random.Range (minY, maxY), zPoint);
 			//transform.position = Vector3.Lerp (startVec, EndVec,Time.time );
 			//方向転換
+		} else {
+			transform.position = Vector3.Lerp (startVec, EndVec, Time.deltaTime * 0.1f);
 		}
 		if (transform.position.z <= -200 ) {
 			Destroy (gameObject,1f);
 		}
-
 	}
 
 /*	Vector3 randomMove(){
@@ -88,17 +87,15 @@ public class snakeScript : MonoBehaviour {
 			ballScript bsc = myBullet.GetComponent<ballScript> ();
 			int tag = bsc.getTag ();
 			mTag = mTag + tag;
-			mTag =	Mathf.Clamp (mTag, -4, 4);
-			if (mTag == 1 || mTag == 0 || mTag == -1) {
+			mTag =	Mathf.Clamp (mTag, -2, 2);
+			if ( mTag == 0 ) {
 				deleteFlag = true;
 			} else {
 				deleteFlag = false;
 			}
 			}
 			Debug.Log (mTag);
-			int soeji = mTag + 4;
+			int soeji = mTag + 2;
 			GetComponent<Renderer>().material = materials[soeji]; 
 		}
-
-
 }

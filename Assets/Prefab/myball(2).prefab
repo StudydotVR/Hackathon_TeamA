@@ -217,15 +217,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mTag: 0
   materials:
-  - {fileID: 2100000, guid: 317ffe3c9c656485ba29c9f187cc0926, type: 2}
-  - {fileID: 2100000, guid: f128098dfc14043aa91d24acbc549a99, type: 2}
-  - {fileID: 2100000, guid: a7d9f7a567ec24e87aa065734a65e8fa, type: 2}
-  - {fileID: 2100000, guid: a4566a5ff8eb94df8b342c7c3912f74b, type: 2}
+  - {fileID: 2100000, guid: 8c5e239265dd24fc792afa1fac9cb52c, type: 2}
+  - {fileID: 2100000, guid: e7a70be7fe2ce403c9e4e943f18a51ca, type: 2}
   - {fileID: 2100000, guid: 86c0fc338c26448d2b696c789ff6dd87, type: 2}
-  - {fileID: 2100000, guid: a4566a5ff8eb94df8b342c7c3912f74b, type: 2}
-  - {fileID: 2100000, guid: d52cdcbbae1704e3eb72ec3ced24a326, type: 2}
-  - {fileID: 2100000, guid: e70de7fb5b03a408f922ed7119511663, type: 2}
-  - {fileID: 2100000, guid: 2cbf168d16f164555842ff96bc7dcd92, type: 2}
+  - {fileID: 2100000, guid: 40a0121634db5467fb49b78bf1abc4a6, type: 2}
+  - {fileID: 2100000, guid: 153fcaaf6b2ce462088e9d5c9a7dc7e3, type: 2}
 --- !u!114 &11465766
 MonoBehaviour:
   m_ObjectHideFlags: 1

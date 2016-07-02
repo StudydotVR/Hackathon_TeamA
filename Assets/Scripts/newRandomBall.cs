@@ -15,11 +15,10 @@ public class newRandomBall : MonoBehaviour {
 	}
 	public	int selectBall(){
 		int number = Random.Range (0, 4);
-		if (number > 1) {
-			number = number + 1 ;
-		} else {			
-			number = number - 4;
-
+		if (number < 2) {			
+			number = number - 2;
+		} else {
+			number--;
 		}
 		Debug.Log (number);
 		return number;
@@ -32,7 +31,7 @@ public class newRandomBall : MonoBehaviour {
 	public void MakeEnemy(){
 		int enemyCount = Random.Range (1, 5);
 		for (int i = 0; i < enemyCount; i++) {
-			Vector3 vec = new Vector3 (Random.Range (-3f, 3f)  - 4f, Random.Range (0.5f, 1f), -3f);
+			Vector3 vec = new Vector3 (Random.Range (-1f, 2f) , Random.Range (0.7f, 1.2f), 7f);
 			GameObject enemy =	Instantiate(enemyBall,vec,enemyBall.transform.rotation) as GameObject;
 			snakeScript sSc = enemy.GetComponent<snakeScript> ();
 			sSc.setTag(selectBall());
