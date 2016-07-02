@@ -4,11 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - 1
-  - 2
-  - 3
-  - 4
-  - 5
+  - ' Wall'
+  - bullet
+  - myBullet
   layers:
   - Default
   - TransparentFX

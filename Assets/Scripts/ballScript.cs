@@ -5,10 +5,12 @@ public class ballScript : MonoBehaviour { //自分の玉 色のマテリアル�
 	private Rigidbody rigid;
 	private GameObject ball;
 	private bool shotFlag;
-	public string mTag;
+	public int mTag;
+	public Material[] materials;
 	// Use this for initialization
 	void Start () {
 		shotFlag = false;
+		rigid = GetComponent<Rigidbody> ();
 
 	}
  
@@ -19,21 +21,27 @@ public class ballScript : MonoBehaviour { //自分の玉 色のマテリアル�
 	public void setShotFlag(){
 		shotFlag = true;
 	}
-	public void setObject(GameObject obj){
-		ball = obj;
-		rigid = ball.GetComponent<Rigidbody> ();
-	}
-	public	void setTag(string tag){
-		mTag = tag;
-	}
 
+
+	public	void setTag(int tag){
+		
+		mTag = tag;
+		int soeji = mTag + 4;
+		soeji = Mathf.Clamp (soeji, 0, 8);
+		GetComponent<Renderer>().material = materials[soeji]; 
+	}
+	public int getTag(){
+		return mTag;
+	}
 	void FixedUpdate(){
 		if (shotFlag) {
-			rigid.AddForce (0,0, Mathf.Abs(ball.transform.position.z)  * 10);//まっすぐ飛ばす
-			if (ball.transform.position.z >= 10) {
-				Destroy (ball, 1f);
-			}
-		}
+			rigid.AddForce (0,0, Mathf.Abs(transform.position.z)  * 10);//まっすぐ飛ばす
 
+
+		}
+		if (transform.position.z >= 10) {
+			Destroy (gameObject);
+		}
 	}
+
 }
