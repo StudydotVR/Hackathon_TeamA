@@ -14,7 +14,6 @@ public class pointTextScript : MonoBehaviour {
 		
 
 	}
-
 	public void disPlayText(int score){
 		totalScore = totalScore + score;
 		Debug.Log (totalScore);

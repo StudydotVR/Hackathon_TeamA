@@ -13,9 +13,10 @@ GameObject:
   - 23: {fileID: 2307948}
   - 114: {fileID: 11464626}
   - 54: {fileID: 5472038}
+  - 114: {fileID: 11484222}
   m_Layer: 0
   m_Name: myball
-  m_TagString: bullet
+  m_TagString: myBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +80,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &11464626
 MonoBehaviour:
@@ -93,6 +94,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mTag: 0
+  materials:
+  - {fileID: 2100000, guid: 317ffe3c9c656485ba29c9f187cc0926, type: 2}
+  - {fileID: 2100000, guid: f128098dfc14043aa91d24acbc549a99, type: 2}
+  - {fileID: 2100000, guid: a7d9f7a567ec24e87aa065734a65e8fa, type: 2}
+  - {fileID: 2100000, guid: a4566a5ff8eb94df8b342c7c3912f74b, type: 2}
+  - {fileID: 2100000, guid: 86c0fc338c26448d2b696c789ff6dd87, type: 2}
+  - {fileID: 2100000, guid: a4566a5ff8eb94df8b342c7c3912f74b, type: 2}
+  - {fileID: 2100000, guid: d52cdcbbae1704e3eb72ec3ced24a326, type: 2}
+  - {fileID: 2100000, guid: e70de7fb5b03a408f922ed7119511663, type: 2}
+  - {fileID: 2100000, guid: 2cbf168d16f164555842ff96bc7dcd92, type: 2}
+--- !u!114 &11484222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 288a26c98fab84c61b42bc78546296da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!136 &13640598
 CapsuleCollider:
   m_ObjectHideFlags: 1

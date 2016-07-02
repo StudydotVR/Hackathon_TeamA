@@ -43,5 +43,10 @@ public class ballScript : MonoBehaviour { //自分の玉 色のマテリアル�
 			Destroy (gameObject);
 		}
 	}
+	void OnCollisionEnter(Collision other){
+		if (other.collider.tag == "bullet") {
+			Destroy (gameObject);
+		}
+	}
 
 }

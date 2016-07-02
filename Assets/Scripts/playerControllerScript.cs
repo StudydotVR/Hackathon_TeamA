@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 public class playerControllerScript : MonoBehaviour {
+	private static int level; // 難易度　１〜３
 	private GameObject cube;
 	public Texture2D cursor; // ポインタの画像
 	public  GameObject ball;
@@ -39,31 +40,25 @@ public class playerControllerScript : MonoBehaviour {
 		}
 		bool push = Input.GetMouseButtonUp(0);
 		if (push) {
-
-
 			GameObject obj = getObject ();
-			Vector3 position = Input.mousePosition;
-			position.z = 2f;
-			// マウス位置座標をスクリーン座標からワールド座標に変換する
-			Vector3 screenToWorldPointPosition = Camera.main.ScreenToWorldPoint(position);
-			// ワールド座標に変換されたマウス座標を代入*/
-			obj.transform.position = screenToWorldPointPosition;
-			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);	// クリックした位置から真っ直ぐ奥に行く光線.
-			RaycastHit hitInfo;												// ヒット情報を格納する変数を作成
-			Vector3 vec = ray.direction.normalized;
-			/*if(Physics.Raycast(ray , out hitInfo , 10)){			// カメラから距離10の光線を出し、もし何かに当たったら
-				if(hitInfo.collider.gameObject.tag == "bullet"){		// その当たったオブジェクトのタグ名が Enemy なら
-					GameObject enemy = hitInfo.collider.gameObject;
-					obj.transform.position = Vector3												// 当たったオブジェクトを、参照。
-					return;											// ターゲットが見つかったので、処理を抜ける
+			if (obj != null) {
+				
+				Vector3 position = Input.mousePosition;
+				position.z = 2f;
+				// マウス位置座標をスクリーン座標からワールド座標に変換する
+				Vector3 screenToWorldPointPosition = Camera.main.ScreenToWorldPoint (position);
+				// ワールド座標に変換されたマウス座標を代入*/
+				obj.transform.position = screenToWorldPointPosition;
+				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);	// クリックした位置から真っ直ぐ奥に行く光線.
+				RaycastHit hitInfo;												// ヒット情報を格納する変数を作成
+				Vector3 vec = ray.direction.normalized;
+				if (Physics.Raycast (ray, out hitInfo)) {
+					obj.GetComponent<Rigidbody> ().velocity = vec * 4;
+					obj.transform.Rotate (vec, 1);
+					// Do something with the object that was hit by the raycast.
+				} else {
+					ballsc.setShotFlag ();
 				}
-			}*/
-			if (Physics.Raycast (ray, out hitInfo)) {
-				obj.GetComponent<Rigidbody> ().velocity = vec * 4;
-				 obj.transform.Rotate (vec, 1);
-				// Do something with the object that was hit by the raycast.
-			} else {
-				ballsc.setShotFlag ();
 			}
 			setObject();
 		}
@@ -77,8 +72,5 @@ public class playerControllerScript : MonoBehaviour {
 	}
 	public void point (){
 		Psc.disPlayText (100);
-
-
-
 	}
 }
