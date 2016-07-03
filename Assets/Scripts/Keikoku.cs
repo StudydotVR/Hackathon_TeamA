@@ -27,14 +27,18 @@ public class Keikoku : MonoBehaviour {
 
 	void OnTriggerExit(Collider collider){
 		
-				if (collider.gameObject.tag == "bullet") {
-			GetComponent<Renderer>().material = materials[0]; 
-			Destroy(collider.gameObject);
+		if (collider.gameObject.tag == "bullet") {
+			GetComponent<Renderer> ().material = materials [0]; 
+			Destroy (collider.gameObject);
 
 
-			Destroy(HPImages[i]);
+			Destroy (HPImages [i]);
 			i++;
+
+				
+			
 		}
 	}
+	
 
 }
