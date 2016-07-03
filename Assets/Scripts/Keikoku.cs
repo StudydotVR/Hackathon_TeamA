@@ -6,6 +6,8 @@ public class Keikoku : MonoBehaviour {
 	public Material[]  materials; 
 	private AudioSource warning03;
 	public AudioClip sound;
+	public Object[] HPImages;
+	int i = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -28,6 +30,10 @@ public class Keikoku : MonoBehaviour {
 				if (collider.gameObject.tag == "bullet") {
 			GetComponent<Renderer>().material = materials[0]; 
 			Destroy(collider.gameObject);
+
+
+			Destroy(HPImages[i]);
+			i++;
 		}
 	}
 
