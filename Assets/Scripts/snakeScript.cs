@@ -29,10 +29,10 @@ public class snakeScript : MonoBehaviour {
 		//Vector3 vec = randomMove();
 		//rigid.AddForce (vec);
 		deleteFlag = false;
-		minX = -1f;
-		maxX = 3f;
-		minY = 0.7f;
-		maxY = 4f;
+		minX = -2f;
+		maxX = 2f;
+		minY = 2f;
+		maxY = 3f;
 
 
 		player = GameObject.Find ("Player");

@@ -32,7 +32,7 @@ public class newRandomBall : MonoBehaviour {
 	}
 
 	public void MakeEnemy(){
-		int enemyCount = Random.Range (1, 3);
+		int enemyCount = Random.Range (1, 4);
 	    for (int i = 0; i < enemyCount; i++) {
 			Vector3 vec = new Vector3 (Random.Range (0.9f, 2f) , Random.Range (0.7f, 1f), originEnemy.transform.position.z - 3f);
 			GameObject enemy =	Instantiate(enemyBall,vec,enemyBall.transform.rotation) as GameObject;
@@ -72,7 +72,7 @@ public class newRandomBall : MonoBehaviour {
 
 	}
 	public int selectEnemy(){
-		return Random.Range (0, 17);
+		return Random.Range (0, 16);
 
 	}
 

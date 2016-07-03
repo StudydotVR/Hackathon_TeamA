@@ -11,6 +11,10 @@ TagManager:
   - myBullet
   - Teki
   - ' Wall'
+  - levelthird
+  - levelfirst
+  - levelsecond
+  - Keikoku
   layers:
   - Default
   - TransparentFX

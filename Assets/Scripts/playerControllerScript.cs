@@ -40,7 +40,7 @@ public class playerControllerScript : MonoBehaviour {
 	void Update () {
 		timeCount++;
 
-		if (timeCount >= 100) {
+		if (timeCount >= 400) {
 			timeCount = 0;
 			randomBall.MakeEnemy ();
 		}

@@ -6,6 +6,7 @@ public class ballScript : MonoBehaviour { //自分の玉 色のマテリアル�
 	private GameObject ball;
 	private bool shotFlag;
 	public int mTag;
+	private int i = 0;
 	public Material[] materials;
 	// Use this for initialization
 	void Start () {
@@ -16,7 +17,11 @@ public class ballScript : MonoBehaviour { //自分の玉 色のマテリアル�
  
 	// Update is called once per frame
 	void Update () {
-		
+		i++;
+		if (i >= 2000) {
+			Destroy (gameObject);
+			i = 0;
+		}
 	}
 	public void setShotFlag(){
 		shotFlag = true;
@@ -43,9 +48,9 @@ public class ballScript : MonoBehaviour { //自分の玉 色のマテリアル�
 		}
 	}
 	void OnCollisionEnter(Collision other){
-		if (other.collider.tag == "bullet") {
+		if(other.collider.tag == "bullet")
 			Destroy (gameObject);
-		}
+
 	}
 
 }
