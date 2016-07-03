@@ -24,10 +24,9 @@ public class ballScript : MonoBehaviour { //自分の玉 色のマテリアル�
 
 
 	public	void setTag(int tag){
-		
 		mTag = tag;
-		int soeji = mTag + 4;
-		soeji = Mathf.Clamp (soeji, 0, 8);
+		int soeji = mTag + 2;
+		soeji = Mathf.Clamp (soeji, 0, 4);
 		GetComponent<Renderer>().material = materials[soeji]; 
 	}
 	public int getTag(){
