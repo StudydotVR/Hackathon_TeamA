@@ -18,14 +18,16 @@ public class Keikoku : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		if (other.gameObject.tag == "bullet") {
-			GetComponent<Renderer> ().material = materials [1];
 			warning03.PlayOneShot(sound);
+			GetComponent<Renderer> ().material = materials [1];
 		}
 	}
 
 	void OnTriggerExit(Collider collider){
+		
 				if (collider.gameObject.tag == "bullet") {
 			GetComponent<Renderer>().material = materials[0]; 
+			Destroy(collider.gameObject);
 		}
 	}
 
