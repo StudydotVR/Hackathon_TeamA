@@ -6,22 +6,25 @@ public class newRandomBall : MonoBehaviour {
 	private int totalVariety;//中性含めた玉の種類-1
 	public GameObject enemyBall;
 	public GameObject originEnemy;
-
+	private bool gim ;
 	// Use this for initialization
 	void Start () {
 		myVariety = 4;
 		//totalVariety = 9;
 		selectBall ();
+		gim = false;
 	}
-	public	int selectBall(){
+	public	int[] selectBall(){
 		int number = Random.Range (0, 4);
+		int tag;
 		if (number < 2) {			
-			number = number - 2;
+			tag = number - 2;
 		} else {
-			number--;
+			tag= number-1;
 		}
 		Debug.Log (number);
-		return number;
+		int[] num = new int[]{ number, tag };
+		return num;
 	}
 	// Update is called once per frame
 	void Update () {
@@ -39,19 +42,26 @@ public class newRandomBall : MonoBehaviour {
 			GameObject target = canvas.transform.FindChild ("RawImage").gameObject;
 		   rawImage = target.GetComponent<RawImage> ();
 			int chemicalNum = selectEnemy ();
-			bulletDataScript bu = GetComponent<bulletDataScript> ();
+			if (chemicalNum == 16) {
+				gim = true;
+				Destroy (rawImage);
+			} else {
+				gim = false;
+					bulletDataScript bu = GetComponent<bulletDataScript> ();
 				//	int[] tags = bu.getTagArray ();
-			int tag = bu.getTag(chemicalNum);
-				sSc.setTag(tag);
+				int tag = bu.getTag (chemicalNum);
+				sSc.setTag (tag);
 				Texture[] texs = bu.getImage ();
 				Texture texture = texs [chemicalNum];
-			if (titleButtonScript.getLevel () != 1) {
-				rawImage.texture = texture;
+				if (titleButtonScript.getLevel () != 1) {
+					rawImage.texture = texture;
 
-			} else {
-				rawImage.hideFlags = HideFlags.HideAndDontSave;
-				Destroy (rawImage);
+				} else {
+					rawImage.hideFlags = HideFlags.HideAndDontSave;
+					Destroy (rawImage);
+				}
 			}
+			sSc.setGim (gim);
 				
 		//	}
 			//GameObject canvas = enemy.transform.FindChild("Canvas").gameObject;
@@ -62,7 +72,9 @@ public class newRandomBall : MonoBehaviour {
 
 	}
 	public int selectEnemy(){
-		return Random.Range (0, 16);
+		return Random.Range (0, 17);
+
 	}
+
 
 }

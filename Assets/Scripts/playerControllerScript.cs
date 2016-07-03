@@ -16,6 +16,8 @@ public class playerControllerScript : MonoBehaviour {
 	public AudioClip sound;
 	private pointTextScript Psc;
 	public bulletDataScript bulDataSC;
+	public GameObject nextImage;
+	public Texture[] textures;
 	// Use this for initialization
 	void Start () {
 		Vector2 vector2 = new Vector2(cursor.width / 2 , cursor.height / 2);
@@ -58,7 +60,6 @@ public class playerControllerScript : MonoBehaviour {
 				Vector3 vec = ray.direction.normalized;
 				if (Physics.Raycast (ray, out hitInfo)) {
 					obj.GetComponent<Rigidbody> ().velocity = vec * 4;
-
 					// Do something with the object that was hit by the raycast.
 				} else {
 					ballsc.setShotFlag ();
@@ -71,8 +72,11 @@ public class playerControllerScript : MonoBehaviour {
 	GameObject makeBall(){
 		GameObject	nextBall  =	Instantiate (ball,transform.position,ball.transform.rotation) as GameObject;//のちにマウスのポインタの座標に変更
 		ballsc = nextBall.GetComponent<ballScript>();
-		int tag = randomBall.selectBall ();
-		ballsc.setTag (tag);
+		int[] tag = randomBall.selectBall ();
+		ballsc.setTag (tag[1]);
+		RawImage img = nextImage.GetComponent<RawImage> ();
+		Texture texture = textures [tag[0]];
+		img.texture = texture;
 		return nextBall;
 	}
 	public void point (){

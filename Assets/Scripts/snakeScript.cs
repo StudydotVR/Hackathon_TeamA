@@ -21,6 +21,7 @@ public class snakeScript : MonoBehaviour {
 	private bool deleteFlag;
 	public Material[] materials;
 	private playerControllerScript playerSC;
+	private bool gimFlag;
 	// Use this for initialization
 	void Start () {
 		Count = 0;
@@ -28,16 +29,16 @@ public class snakeScript : MonoBehaviour {
 		//Vector3 vec = randomMove();
 		//rigid.AddForce (vec);
 		deleteFlag = false;
-		minX = -2f;
-		maxX = -1f;
+		minX = -1f;
+		maxX = 3f;
 		minY = 0.7f;
-		maxY = 1f;
+		maxY = 4f;
 
 
 		player = GameObject.Find ("Player");
 		zPoint = player.transform.position.z;
-		startVec = new Vector3 (Random.Range (minX, maxX) , Random.Range (minY, maxY), transform.position.z);
-		EndVec = new Vector3 (Random.Range (minX, maxX), Random.Range (minY, maxY), zPoint);
+		startVec = new Vector3 (Random.Range (minX, maxX) , transform.position.y, Random.Range(minY,maxY) );
+		EndVec = new Vector3 (Random.Range (minX, maxX),Random.Range(minY,maxY), zPoint);
 		playerSC = player.GetComponent<playerControllerScript> ();
 	}
 	
@@ -65,15 +66,15 @@ public class snakeScript : MonoBehaviour {
 		}
 		Count++;
 		startVec = transform.position;
-		if (Count >= 10) {
+		if (Count >= 10000) {
 			Count = 0;
-			EndVec = new Vector3 (Random.Range (minX, maxX), Random.Range (minY, maxY), zPoint);
+			EndVec = new Vector3 (Random.Range (minX, maxX), zPoint, Random.Range(minY,maxY));
 			//transform.position = Vector3.Lerp (startVec, EndVec,Time.time );
 			//方向転換
 		} else {
 			transform.position = Vector3.Lerp (transform.position, EndVec, Time.deltaTime *0.1f);
 		}
-		if (transform.position.z <= -50 ) {
+		if (transform.position.y <= -50 ) {
 			Destroy (gameObject,1f);
 		}
 	}
@@ -85,21 +86,29 @@ public class snakeScript : MonoBehaviour {
 
 	void OnCollisionEnter(Collision other){
 		if (other.collider.tag == "myBullet") {
+			
 			deleteCount = 0;
 			GameObject myBullet = other.collider.gameObject;
 			ballScript bsc = myBullet.GetComponent<ballScript> ();
-			int tag = bsc.getTag ();
-			mTag = mTag + tag;
-			mTag =	Mathf.Clamp (mTag, -2, 2);
-			if ( mTag == 0 ) {
-				deleteFlag = true;
+			if (gimFlag) {
+				
 			} else {
-				deleteFlag = false;
+				int tag = bsc.getTag ();
+				mTag = mTag + tag;
+				mTag =	Mathf.Clamp (mTag, -2, 2);
+				if (mTag == 0) {
+					deleteFlag = true;
+				} else {
+					deleteFlag = false;
+				}
+				int soeji = mTag + 2;
+				GetComponent<Renderer> ().material = materials [soeji]; 
 			}
-			int soeji = mTag + 2;
-			GetComponent<Renderer>().material = materials[soeji]; 
-			}
+		}
 			Debug.Log (mTag);
 			
 		}
+	public void setGim(bool gim){
+		gimFlag = gim;
+	}
 }
