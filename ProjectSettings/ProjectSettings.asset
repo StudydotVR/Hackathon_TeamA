@@ -10,15 +10,15 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: Hackathon_TeamA
+  productName: Hackathon_Template
   defaultCursor: {fileID: 0}
-  cursorHotspot: {x: 640, y: 480}
+  cursorHotspot: {x: 0, y: 0}
   m_ShowUnitySplashScreen: 1
   m_VirtualRealitySplashScreen: {fileID: 0}
   defaultScreenWidth: 1024
   defaultScreenHeight: 768
-  defaultScreenWidthWeb: 960
-  defaultScreenHeightWeb: 600
+  defaultScreenWidthWeb: 640
+  defaultScreenHeightWeb: 480
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   m_ActiveColorSpace: 0
@@ -336,15 +336,15 @@ PlayerSettings:
   psmSplashimage: {fileID: 0}
   spritePackerPolicy: 
   scriptingDefineSymbols:
-    1: 9
-  metroPackageName: Hackathon_TeamA
+    7: 16
+  metroPackageName: Hackathon_Template
   metroPackageVersion: 
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
   metroCertificateIssuer: 
   metroCertificateNotAfter: 0000000000000000
-  metroApplicationDescription: Hackathon_TeamA
+  metroApplicationDescription: Hackathon_Template
   wsaImages: {}
   metroTileShortName: 
   metroCommandLineArgsFile: 
